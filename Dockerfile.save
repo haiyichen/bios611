@@ -1,0 +1,10 @@
+FROM rocker/rstudio
+
+RUN apt-get update && apt-get install -y \
+	libcur14-openssl-dev \
+	libxml2-dev \
+	libssl-dev \
+	libgit2-dev \
+	&& rm -rf /var/lib/apt/lists/
+
+RUN R -e "install.packages(c('tidyverse', "ggplot2", 'randomForest', 'lme4', 'broom', 'glm'))"
